@@ -1,0 +1,28 @@
+{
+  "name": "lunch.organizer",
+  "version": "1.0.0",
+  "description": "Hackathon lunch organizer app",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revadir/LunchOrganizer.git"
+  },
+  "keywords": [
+    "lunch",
+    "organizer"
+  ],
+  "author": "Sylvie, Justin and Reva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/revadir/LunchOrganizer/issues"
+  },
+  "homepage": "https://github.com/revadir/LunchOrganizer#readme",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "request": "^2.61.0"
+  }
+}
