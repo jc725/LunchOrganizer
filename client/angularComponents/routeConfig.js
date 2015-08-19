@@ -1,6 +1,9 @@
 
 var app = angular.module('lunch-organizer-app', [
   'loginModule',
+  'signupModule',
+  'profileModule',
+  'lunchModule',
   'ngRoute'
 ])
 
@@ -10,18 +13,18 @@ var app = angular.module('lunch-organizer-app', [
       templateUrl: '/views/login.html',
       controller: 'LoginController'
      })
-    // .when('/Signup', {
-    //   templateUrl: '/signup.html',
-    //   controller: 'SignupController'
-    // })
-    // .when('/SetProfile', {
-    //   templateUrl: '/setprofile.html',
-    //   controller: 'ProfileController'
-    // })
-    // .when('/OrganizeLunch', {
-    //   templateUrl: '/organizelunch.html',
-    //   controller: 'LunchController'
-    // })
+     .when('/Signup', {
+       templateUrl: '/views/signup.html',
+       controller: 'SignupController'
+     })
+     .when('/SetProfile', {
+       templateUrl: '/views/setprofile.html',
+       controller: 'ProfileController'
+     })
+     .when('/OrganizeLunch', {
+       templateUrl: '/views/organizelunch.html',
+       controller: 'LunchController'
+     })
     .otherwise({
       redirectTo: '/Login'
     });

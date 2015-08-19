@@ -5,11 +5,16 @@
   <title></title>
 </head>
 <body>
-  <div>
-    Login
-    <input type="text" ng-model="userName"/>
-    <input type="pasword" ng-model="password"/>
-    <button ng-click="login()">Sign in</button>
-  </div>
+
+    <input type="text" ng-model="userName" placeholder="Enter your user name here."/>
+    <input type="pasword" ng-model="password" placeholder="Enter password here."/>
+    <button ng-click="login()">Log in</button>
+
+    <br/>
+    <br/>
+    <div>
+        <a style="background-color: white;" href="#/Signup">Don't have an account? <strong>Signup</strong> ...</a>
+    </div>
+
 </body>
 </html>

@@ -19,6 +19,10 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/../client/index.html');
 });
 
+app.post('/signup', function(req, res) {
+  res.sendStatus(200).send('OK');
+})
+
 app.get('/search', function(req, res) {
 
   yelper.search({term: "food", location: "San Francisco"}, function(error, data) {

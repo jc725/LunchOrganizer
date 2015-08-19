@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Lunch Organizer</title>
+
     <!-- dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+
+    <link rel="stylesheet" href="styles/styles.css" type="text/css"/>
+
 </head>
 <body ng-app="lunch-organizer-app">
     <h1>Lunch Organizer</h1>
-    
+
+    <hr/>
+    <p>Welcome to Lunch Organizer!</p>
+    <p>In this app, you will be able to organize a lunch with your friends based on preferences.</p>
+    <br/>
+
+    <!-- Main navigation bar -->
+    <hr/>
+    <ul>
+        <li><a href="#Login" style="font-size: x-large">Login</a></li>
+        <li><a href="#OrganizeLunch" style="font-size: x-large">Organize Lunch</a></li>
+    </ul>
+
     <!-- View magic happens here -->
     <div ng-view></div>
     
@@ -17,5 +33,8 @@
     <script src="angularComponents/routeConfig.js"></script>
     <script src="angularComponents/factories.js"></script>
     <script src="angularComponents/loginController.js"></script>
+    <script src="angularComponents/signupController.js"></script>
+    <script src="angularComponents/profileController.js"></script>
+    <script src="angularComponents/lunchController.js"></script>
 </body>
 </html>

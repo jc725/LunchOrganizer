@@ -20,4 +20,4 @@ var module = angular.module('factory', [])
   return {
     authenticate: authenticate
   };
-}])
+}]);
