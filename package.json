@@ -4,6 +4,7 @@
   "description": "Hackathon lunch organizer app",
   "main": "server/server.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,8 +22,8 @@
   },
   "homepage": "https://github.com/revadir/LunchOrganizer#readme",
   "dependencies": {
-    "body-parser": "^1.13.3",
     "express": "^4.13.3",
-    "request": "^2.61.0"
+    "request": "^2.61.0",
+    "serve-favicon": "^2.3.0"
   }
 }
