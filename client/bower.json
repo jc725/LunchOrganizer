@@ -1,0 +1,27 @@
+{
+  "name": "LunchOrganizer",
+  "version": "0.0.0",
+  "homepage": "https://hackathon-lunch-organizer.herokuapp.com/",
+  "authors": [
+    "Sylvie",
+    "Reva",
+    "Justin"
+  ],
+  "description": "organizes lunch for groups",
+  "main": "index.html",
+  "keywords": [
+    "lunch",
+    "organizer"
+  ],
+  "license": "none",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.4"
+  }
+}

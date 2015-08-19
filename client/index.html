@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Lunch Organizer</title>
+    <!-- dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
 </head>
-<body>
+<body ng-app="lunch-organizer-app">
     <h1>Lunch Organizer</h1>
+    
+    <!-- View magic happens here -->
+    <div ng-view></div>
+    
+    <!-- scripts -->
+    <script src="angularComponents/routeConfig.js"></script>
+    <script src="angularComponents/factories.js"></script>
+    <script src="angularComponents/loginController.js"></script>
 </body>
 </html>
