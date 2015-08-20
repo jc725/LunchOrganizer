@@ -10,7 +10,10 @@ function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerSer
   $scope.attendees = [
   ];
 
+  $scope.cuisines = [ 'Chinese', 'Mexican', 'Italian', 'Mediterranean', 'Indian'];
+
   $scope.selectedUser = "Select User...";
+  $scope.selectedCuisine = "Select Cuisine...";
 
   $scope.addAttendee = function() {
     var attendee = $scope.selectedUser;
@@ -35,6 +38,10 @@ function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerSer
       // add it to users
       $scope.allUsers.push(attendee);
     }
+  }
+
+  $scope.cuisineSelected = function(cuisine) {
+    $scope.selectedCuisine = cuisine;
   }
 
   $scope.organizeLunch = function() {
