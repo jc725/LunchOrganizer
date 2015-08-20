@@ -1,13 +1,16 @@
-
-var app = angular.module('lunch-organizer-app', [
+angular.module('lunch-organizer-app', [
   'loginModule',
   'signupModule',
   'profileModule',
   'lunchModule',
+  'dashboardModule',
   'ngRoute'
 ])
+.config(config);
 
-.config(['$routeProvider', function($routeProvider) {
+config.$inject = ['$routeProvider'];
+
+function config($routeProvider) {
   $routeProvider
     .when('/Login', {
       templateUrl: '/views/login.html',
@@ -25,7 +28,12 @@ var app = angular.module('lunch-organizer-app', [
        templateUrl: '/views/organizelunch.html',
        controller: 'LunchController'
      })
+    .when('/Results', {
+      templateUrl: '/views/results.html',
+      controller: 'ResultsController'
+    })
     .otherwise({
       redirectTo: '/'
     });
-}]);
+
+}

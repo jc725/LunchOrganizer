@@ -1,11 +1,15 @@
+angular.module('loginModule', ['factory'])
+  .controller('LoginController', loginController);
 
-var module = angular.module('loginModule', ['factory'])
-
-.controller('LoginController', ['$scope', 'LoginFactory', function($scope, LoginFactory) {
+loginController.$inject = ['$scope', 'LoginFactory', 'SessionService'];
+function loginController($scope, LoginFactory, SessionService) {
   $scope.login = function() {
     LoginFactory.authenticate($scope.username, $scope.password)
-    .then(function(data) {
-      console.log('data! ', data);
+    .success(function(data) {
+      // login is successful...send the user to /
+      window.location.href = '/';
+      SessionService.setUserLoggedIn(true);
+      $scope.$digest();
     });
   }
-}]);
+}

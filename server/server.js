@@ -20,12 +20,22 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
+app.post('/login', function(req, res) {
+  // authenicate the user
+  res.send('OK');
+});
+
 app.post('/signup', function(req, res) {
   // store user info in the db
   res.send('OK');
 });
 
 app.post('/setprofile', function(req, res) {
+  // store user profile in the db
+  res.send('OK');
+});
+
+app.post('/organizeLunch', function(req, res) {
   // store user profile in the db
   res.send('OK');
 });

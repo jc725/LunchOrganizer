@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<b>
+<body>
 
-    <input type="text" ng-model="favoriteRestaurant" placeholder="Favorite restaurant"/>
-    <h4>Food preferences</h4>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Profile</h3>
+        </div>
+        <div class="panel-body">
+            <input type="text" ng-model="favoriteRestaurant" placeholder="Favorite restaurant"/>
+            <h4>Food preferences</h4>
 
-    <input type="checkbox" ng-model="preferences.seaFood"/>Sea food<br/>
-    <input type="checkbox" ng-model="preferences.chinese">Chinese<br/>
+            <input type="checkbox" ng-model="preferences.seaFood"/>Sea food<br/>
+            <input type="checkbox" ng-model="preferences.chinese">Chinese<br/>
 
-    <br/>
-    <button ng-click="setProfile()">Done</button>
+            <button ng-click="setProfile()">Done</button>
 
+        </div>
+    </div>
 </body>
 </html>
