@@ -30,7 +30,7 @@
     "http": "0.0.0",
     "mocha": "^2.2.5",
     "passport": "^0.2.2",
-    "pg": "^4.4.1",
+    "postgres-bluebird": "0.0.4",
     "request": "^2.61.0",
     "yelp": "^0.2.0"
   }
