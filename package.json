@@ -26,6 +26,7 @@
   "homepage": "https://github.com/revadir/LunchOrganizer#readme",
   "dependencies": {
     "body-parser": "^1.13.3",
+    "bower": "^1.4.1",
     "chai": "^3.2.0",
     "express": "^4.13.3",
     "http": "0.0.0",
