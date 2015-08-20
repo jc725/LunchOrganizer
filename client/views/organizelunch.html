@@ -5,28 +5,30 @@
     <title></title>
 </head>
 <body>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Organize Lunch</h3>
-        </div>
-        <div class="panel-body">
-            <p>Ok, so you want to organize a lunch with buddies?  You've come to the right place! Let's get started...</p>
-            <h3>Who do you want to include in the lunch plan?</h3>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Pick your friends here
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Bob</a></li>
-                    <li><a href="#">Dave</a></li>
-                </ul>
-                <button class="btn btn-md btn-primary" style="max-width:100px">Add</button>
+    <div class="container">
+        <div class="panel panel-primary" style="max-width:700px">
+            <div class="panel-heading">
+                <h3 class="panel-title">Organize Lunch</h3>
             </div>
+            <div class="panel-body">
+                <p>Ok, so you want to organize a lunch with buddies?  You've come to the right place! Let's get started...</p>
+                <h3>Who do you want to include in the lunch plan?</h3>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Pick your friends here
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Bob</a></li>
+                        <li><a href="#">Dave</a></li>
+                    </ul>
+                    <button class="btn btn-md btn-primary" style="max-width:100px">Add</button>
+                </div>
 
-            <h3>Attendees:</h3>
-            <div>
-                <button class="btn btn-lg btn-primary btn-block" ng-click="organizeLunch()" style="max-width:100px">Invite!</button>
+                <h3>Attendees:</h3>
+                <div>
+                    <button class="btn btn-lg btn-primary btn-block" ng-click="organizeLunch()" style="max-width:100px">Invite!</button>
+                </div>
             </div>
         </div>
     </div>

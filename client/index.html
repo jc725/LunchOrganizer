@@ -18,26 +18,28 @@
 
 </head>
 <body ng-app="lunch-organizer-app">
-    <div class="page-header">
-        <h1>Lunch Organizer</h1>
-    </div>
-
-    <!-- Main navigation bar -->
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#Login">Login</a>
-            <a class="navbar-brand" href="#OrganizeLunch">Organize Lunch</a>
+    <div class="container">
+        <div class="page-header">
+            <h1>Lunch Organizer</h1>
         </div>
-    </nav>
 
-    <p>Welcome to Lunch Organizer!</p>
-    <p>In this app, you will be able to organize a lunch with your friends based on preferences.</p>
+        <!-- Main navigation bar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#Login">Login</a>
+                <a class="navbar-brand" href="#OrganizeLunch">Organize Lunch</a>
+            </div>
+        </nav>
 
-    <hr/>
+        <p>Welcome to Lunch Organizer!</p>
+        <p>In this app, you will be able to organize a lunch with your friends based on preferences.</p>
 
-    <!-- View magic happens here -->
-    <div ng-view></div>
-    
+        <hr/>
+
+        <!-- View magic happens here -->
+        <div ng-view></div>
+
+    </div>
     <!-- scripts -->
     <script src="angularComponents/dashboardController.js"></script>
     <script src="angularComponents/routeConfig.js"></script>
