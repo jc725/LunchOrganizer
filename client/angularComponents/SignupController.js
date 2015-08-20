@@ -2,9 +2,6 @@ var module = angular.module('signupModule', [])
 
   .controller('SignupController', ['$scope', '$http', function($scope, $http) {
     $scope.signup = function() {
-
-      console.log('signing up with ');
-      console.log('name:', $scope.name);
       $http.post('/signup', {
         data: {
           name: $scope.name,
@@ -13,10 +10,13 @@ var module = angular.module('signupModule', [])
           password: $scope.password
         }
       })
-      .then(function(response) {
-
+      .success(function(response) {
+        // ok, we have signed up the user, so now get more info by redirecting
+        // to our set profile page
+        window.location.href = '/#/SetProfile';
       }, function(err) {
-
+        console.log(err);
       });
-    }
+    };
+
   }]);

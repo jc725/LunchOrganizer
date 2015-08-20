@@ -26,6 +26,6 @@ var app = angular.module('lunch-organizer-app', [
        controller: 'LunchController'
      })
     .otherwise({
-      redirectTo: '/Login'
+      redirectTo: '/'
     });
 }]);

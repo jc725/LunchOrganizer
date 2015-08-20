@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body>
+<b>
 
     <input type="text" ng-model="favoriteRestaurant" placeholder="Favorite restaurant"/>
     <h4>Food preferences</h4>
-    <form>
-        <div>
-            <label class="signupLabel"><input type="checkbox" name="seafood" value="seaFood"/>Sea food</label>
-        </div>
-        <div>
-            <input type="checkbox" name="chinese" value="chineseFood">
-            <label>Chinese</label>
-        </div>
-    </form>
+
+    <input type="checkbox" ng-model="preferences.seaFood"/>Sea food<br/>
+    <input type="checkbox" ng-model="preferences.chinese">Chinese<br/>
+
+    <br/>
+    <button ng-click="setProfile()">Done</button>
 
 </body>
 </html>
