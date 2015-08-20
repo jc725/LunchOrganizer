@@ -4,6 +4,8 @@ angular.module('lunch-organizer-app', [
   'profileModule',
   'lunchModule',
   'dashboardModule',
+  'angularSpinner',
+  'resultsModule',
   'ngRoute'
 ])
 .config(config);

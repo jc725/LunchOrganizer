@@ -11,24 +11,41 @@
                 <h3 class="panel-title">Organize Lunch</h3>
             </div>
             <div class="panel-body">
-                <p>Ok, so you want to organize a lunch with buddies?  You've come to the right place! Let's get started...</p>
+
+
+                <p>Ok, so you want to organize a lunch with buddies?  You've come to the right place! Let's go...</p>
                 <h3>Who do you want to include in the lunch plan?</h3>
+                <h5>Pick your friends here</h5>
                 <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Pick your friends here
+                    <button ng-model="selectedUser"class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        {{ selectedUser }}
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Bob</a></li>
-                        <li><a href="#">Dave</a></li>
+                        <li ng-repeat="user in allUsers">
+                            <a ng-click="userSelected(user)">{{ user }}</a>
+                        </li>
                     </ul>
-                    <button class="btn btn-md btn-primary" style="max-width:100px">Add</button>
+                    <button class="btn btn-md btn-primary" ng-click="addAttendee()" style="max-width:100px">Add</button>
                 </div>
 
                 <h3>Attendees:</h3>
+                <div style="margin:20px">
+                    <ul class="list-group" ng-repeat="attendee in attendees">
+                        <li>
+                            <div>
+                                {{ attendee }}
+                                <span style="width:100px;display:inline-block"></span>
+                                <button class="btn btn-danger" ng-click="removeAttendee(attendee)" type="checkbox" style="padding:5px">Remove</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
                 <div>
                     <button class="btn btn-lg btn-primary btn-block" ng-click="organizeLunch()" style="max-width:100px">Invite!</button>
+                    <span spinner-key="spinner-1" us-spinner="{radius:30, width:8, length: 16}"></span>
                 </div>
+
             </div>
         </div>
     </div>
