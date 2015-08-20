@@ -1,69 +1,15 @@
-ul {
-    list-style-type: none;
-    margin: 10px;
-    padding: 0;
-    overflow: hidden;
+.login-form {
+    max-width: 300px;
+    margin: 0 auto;
 }
 
-li {
-    display: inline;
-    float: right;
-    padding: 20px;
+#inputUserName {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-a {
-    display: block;
-    background-color: burlywood;
-    font-family: "Corbel", sans-serif;
+#inputPassword {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
-
-p {
-    font-family: "Corbel", sans-serif;
-    font-size:larger
-}
-
-h1 {
-    text-align: center;
-    font-family: 'Corbel', sans-serif;
-    font-size:xx-large;
-}
-
-h2, h4 {
-    font-family: 'Corbel', sans-serif;
-    font-size:large;
-}
-
-input {
-    width: 360px;
-    display: block;
-    font-size: 13px;
-    padding: 5px;
-    margin-bottom: 5px;
-}
-
-button {
-    width: 100px;
-    height: auto;
-    padding: 10px;
-}
-
-.checkboxLabel {
-    vertical-align: middle;
-    position: relative;
-    bottom: 1px;
-}
-
-input[type=checkbox], input[type=radio] {
-    width: 13px;
-    height: 13px;
-    padding: 0;
-    margin:0;
-    vertical-align: bottom;
-    position: relative;
-    top: -1px;
-    *overflow: hidden;
-}
-input[type=radio] {
-    bottom: 2px;
-}
-

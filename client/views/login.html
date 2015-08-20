@@ -9,17 +9,23 @@
 
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Login</h3>
+            <h3 class="panel-title">Please sign in</h3>
         </div>
         <div class="panel-body">
-            <input class="form-control" type="text" ng-model="userName" placeholder="Enter your user name here."/>
-            <input class="form-control" type="pasword" ng-model="password" placeholder="Enter password here."/>
-
-            <button class="btn btn-default navbar-btn" ng-click="login()">Log in</button>
-
-            <div>
-                <a style="background-color: white;" href="#/Signup">Don't have an account? <strong>Signup</strong> ...</a>
-            </div>
+            <form class="login-form">
+                <label for="inputUsername" class="sr-only">User name</label>
+                <input type="text" ng-model="userName" class="form-control" placeholder="User name" required="" autofocus="">
+                <br/>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" ng-model="password" class="form-control" placeholder="Password" required="">
+                <br/>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <div class="checkbox">
+                    <div>
+                        <a style="background-color: white;" href="#/Signup">Don't have an account? <strong>Signup</strong> ...</a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>

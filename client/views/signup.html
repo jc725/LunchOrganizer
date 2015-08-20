@@ -10,11 +10,24 @@
             <h3 class="panel-title">Enter your information</h3>
         </div>
         <div class="panel-body">
-            <input type="text" ng-model="name" placeholder="Name"/>
-            <input type="text" ng-model="email" placeholder="Email"/>
-            <input type="text" ng-model="userName" placeholder="User name"/>
-            <input type="password" ng-model="password" placeholder="Password"/>
-            <button ng-click="signup()">Sign Up</button>
+
+            <form class="login-form">
+                <label for="inputName" class="sr-only">Name</label>
+                <input type="text" ng-model="name" class="form-control" placeholder="Name" required="" autofocus="">
+                <br/>
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" ng-model="email" class="form-control" placeholder="Password" required="">
+                <br/>
+                <label for="inputUsername" class="sr-only">User name</label>
+                <input type="text" ng-model="userName" class="form-control" placeholder="User name" required="">
+                <br/>
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" ng-model="email" class="form-control" placeholder="Email" required="">
+                <br/>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="signup()">Register</button>
+            </form>
+
         </div>
     </div>
 
