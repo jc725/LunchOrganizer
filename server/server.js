@@ -3,7 +3,8 @@ var express = require('express'),
     request = require('request'),
     http = require('http'),
     path = require('path'),
-    yelper = require('./yelpUtils');
+    yelper = require('./yelpUtils'),
+    db = require('./databaseUtils');
 
 var app = express();
 
@@ -48,4 +49,3 @@ app.get('/search', function(req, res) {
   });
 
 });
-
