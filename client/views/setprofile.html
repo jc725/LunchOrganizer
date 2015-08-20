@@ -19,12 +19,21 @@
                     <label>
                         <input type="checkbox" ng-model="preferences.seaFood"/>Sea food
                     </label>
-                    <label>
-                        <input type="checkbox" ng-model="preferences.chinese"/>Chinese
+                    <label style="margin:0 0 0 10px">
+                        <input type="checkbox" ng-model="preferences.vegetarian"/>Vegetarian
+                    </label>
+                    <label style="margin:0 0 0 10px">
+                        <input type="checkbox" ng-model="preferences.mexican"/>Mexican
+                    </label>
+                    <label style="margin:0 0 0 10px">
+                        <input type="checkbox" ng-model="preferences.italian"/>Italian
                     </label>
                 </div>
 
-                <button ng-click="setProfile()">Done</button>
+                <button class="btn btn-lg btn-primary btn-block" ng-click="setProfile()" style="max-width:100px;float:right">Done</button>
+                <div ng-show="done" class="container">
+                    <h3>Thank you</h3>
+                </div>
 
             </div>
         </div>
