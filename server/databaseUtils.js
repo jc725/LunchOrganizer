@@ -40,6 +40,17 @@ module.exports = {
           return result;
         });
     });
+  },
+
+  getAllUsers: function() {
+    return pg.connectAsync(connectionString).spread(function(connection, release) {
+      return connection.queryAsync("SELECT * FROM users")
+        .then(function(result) {
+          console.log('users query in get prefs:', result.rows);
+          release();
+          return result.rows;
+        });
+    });
   }
 };
 
