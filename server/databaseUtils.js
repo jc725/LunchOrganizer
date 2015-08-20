@@ -1,12 +1,8 @@
 var pg = require('postgres-bluebird');
 var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/lunch';
 
-//var client = new pg.Client(connectionString);
-//client.connect();
-
 module.exports = {
-  addUser: function(data, callback) {
-    // Get a Postgres client from the connection pool
+  addUser: function(data) {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
       return connection.queryAsync("INSERT INTO users(email, username, password) values ($1, $2, $3)", [data.email, data.username, data.password])
         .finally(function() {
@@ -20,8 +16,9 @@ module.exports = {
       return connection.queryAsync("SELECT * FROM userprefs WHERE userid = " + userid)
         .then(function(result) {
           console.log('userprefs query in add prefs:', result);
-          if(result) {
-            return connection.queryAsync("UPDATE userprefs SET categories = $1, WHERE userid = $2", [data, userid])
+          console.log('userprefs query in add prefs rows:', result.rows);
+          if(result.rows.length) {
+            return connection.queryAsync("UPDATE userprefs SET categories = $1 WHERE userid = $2", [data, userid])
           }
            return connection.queryAsync("INSERT INTO userprefs(userid, categories) values ($1, $2)", [userid, data]);
         }, function(err) {
