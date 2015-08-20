@@ -5,7 +5,9 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup-db": "dropdb \"lunch\" && heroku pg:pull DATABASE postgres://localhost:5432/lunch --app hackathon-lunch-organizer",
+    "connect-db": "psql \"dbname=lunch host=localhost port=5432\""
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
     "http": "0.0.0",
     "mocha": "^2.2.5",
     "passport": "^0.2.2",
+    "pg": "^4.4.1",
     "request": "^2.61.0",
     "yelp": "^0.2.0"
   }
