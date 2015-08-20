@@ -44,8 +44,8 @@ app.post('/organizeLunch', function(req, res) {
 app.get('/search', function(req, res) {
 
   yelper.search({term: "food", location: "San Francisco"}, function(error, data) {
-    console.log('yelp search error:', error);
-    console.log('yelp search data:', data);
+    // console.log('yelp search error:', error);
+    // console.log('yelp search data:', data);
   });
 
 });

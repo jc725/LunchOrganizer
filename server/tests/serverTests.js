@@ -13,7 +13,7 @@ describe('database', function() {
 
     db.getAllUsers()
     .then(function(results) {
-      console.log(results);
+      //console.log(results);
       done();
     });
 
