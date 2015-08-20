@@ -7,7 +7,8 @@
     "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup-db": "dropdb \"lunch\" && heroku pg:pull DATABASE postgres://localhost:5432/lunch --app hackathon-lunch-organizer",
-    "connect-db": "psql \"dbname=lunch host=localhost port=5432\""
+    "connect-db": "psql \"dbname=lunch host=localhost port=5432\"",
+    "postinstall": "bower cache clean && bower install"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/revadir/LunchOrganizer#readme",
   "dependencies": {
     "body-parser": "^1.13.3",
+    "bower": "^1.4.1",
     "chai": "^3.2.0",
     "express": "^4.13.3",
     "http": "0.0.0",
