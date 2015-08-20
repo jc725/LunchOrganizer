@@ -15,7 +15,6 @@
 
                 <p>Ok, so you want to organize a lunch with buddies?  You've come to the right place! Let's go...</p>
                 <h3>Who do you want to include in the lunch plan?</h3>
-                <h5>Pick your friends here</h5>
                 <div class="dropdown">
                     <button ng-model="selectedUser"class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         {{ selectedUser }}
@@ -29,7 +28,8 @@
                     <button class="btn btn-md btn-primary" ng-click="addAttendee()" style="max-width:100px">Add</button>
                 </div>
 
-                <h3>Attendees:</h3>
+                <br/>
+                <h4>Selected attendees:</h4>
                 <div style="margin:20px">
                     <ul class="list-group" ng-repeat="attendee in attendees">
                         <li>
@@ -41,8 +41,26 @@
                         </li>
                     </ul>
                 </div>
+
+                <hr/>
                 <div>
-                    <button class="btn btn-lg btn-primary btn-block" ng-click="organizeLunch()" style="max-width:100px">Invite!</button>
+                    <h3>What are you in the mood for today?</h3>
+                    <div class="dropdown">
+                        <button ng-model="selectedCuisine"class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            {{ selectedCuisine }}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li ng-repeat="cuisine in cuisines">
+                                <a ng-click="cuisineSelected(cuisine)">{{ cuisine }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <br/>
+                <div>
+                    <button class="btn btn-lg btn-primary btn-block" ng-click="organizeLunch()" style="max-width:300px;float:right">Get recommendations!</button>
                     <span spinner-key="spinner-1" us-spinner="{radius:30, width:8, length: 16}"></span>
                 </div>
 
