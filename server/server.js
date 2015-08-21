@@ -80,7 +80,6 @@ app.post('/organizeLunch', function(req, res) {
 app.get('/users', function(req, res) {
   db.getAllUsers()
     .then(function(response) {
-      console.log('got users:', response);
       res.send(response);
     }, function(err) {
       res.sendStatus(404);
