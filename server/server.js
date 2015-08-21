@@ -78,8 +78,13 @@ app.post('/organizeLunch', function(req, res) {
 });
 
 app.get('/users', function(req, res) {
-  var users = { data: [ 'reva', 'sylvie', 'justin', 'will', 'dennis' ] };
-  res.send(users);
+  db.getAllUsers()
+    .then(function(response) {
+      console.log('got users:', response);
+      res.send(response);
+    }, function(err) {
+      res.sendStatus(404);
+  });
 });
 
 app.get('/search', function(req, res) {
