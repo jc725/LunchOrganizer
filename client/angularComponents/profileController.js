@@ -1,8 +1,8 @@
 angular.module('profileModule', [])
   .controller('ProfileController', profileController);
 
-profileController.$inject = ['$scope', '$http'];
-function profileController($scope, $http) {
+profileController.$inject = ['$scope', '$http', 'SessionService'];
+function profileController($scope, $http, SessionService) {
   $scope.done = false;
 
   $scope.preferences = {
@@ -15,7 +15,10 @@ function profileController($scope, $http) {
 
     setTimeout(function() {
       $http.post('/setprofile', {
-        data: $scope.preferences
+        data: {
+          user: SessionService.getUserLoggedIn(),
+          prefs: $scope.preferences
+        }
       })
         .success(function(response) {
           // ok, we have got all the information; send the user to organize lunch

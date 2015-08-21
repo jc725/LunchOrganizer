@@ -6,6 +6,7 @@ angular.module('signupModule', ['factory'])
  */
 signupController.$inject = ['$scope', '$http', 'SessionService'];
 function signupController($scope, $http, SessionService) {
+  var self = $scope;
   $scope.signup = function() {
     $http.post('/signup', {
       data: {
@@ -19,7 +20,7 @@ function signupController($scope, $http, SessionService) {
       // ok, we have signed up the user, so now get more info by redirecting
       // to our set profile page
       window.location.href = '/#/SetProfile';
-      SessionService.setUserLoggedIn(true);
+      SessionService.setUserLoggedIn(self.userName);
 
     }, function(err) {
       console.log(err);

@@ -68,8 +68,13 @@ app.post('/signup', function(req, res) {
 });
 
 app.post('/setprofile', function(req, res) {
-  // store user profile in the db
-  res.send('OK');
+  console.log('profile details:', req.body.data);
+  db.addUserPrefs(req.body.data.user, JSON.stringify(req.body.data.prefs))
+    .then(function(response) {
+      res.send('OK');
+    }, function(err) {
+      res.sendStatus(404);
+    });
 });
 
 app.post('/organizeLunch', function(req, res) {
@@ -80,7 +85,6 @@ app.post('/organizeLunch', function(req, res) {
 app.get('/users', function(req, res) {
   db.getAllUsers()
     .then(function(response) {
-      console.log('got users:', response);
       res.send(response);
     }, function(err) {
       res.sendStatus(404);

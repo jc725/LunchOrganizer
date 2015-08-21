@@ -32,7 +32,7 @@ function sessionService() {
 
   this.getUserLoggedIn = function() {
     return window.localStorage.getItem('userLoggedIn');
-  }
+  };
 
   return this;
 }
