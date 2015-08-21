@@ -2,14 +2,15 @@ var pg = require('postgres-bluebird');
 var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/lunch';
 
 module.exports = {
-  addUser: function(data) {
+  addUser: function(email, username, password) {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
-        return connection.queryAsync("SELECT * FROM users WHERE username = $1", [data.username])
+        return connection.queryAsync("SELECT * FROM users WHERE username = $1", [username])
           .then(function(result) {
             if (result.rows.length) {
               console.log('user already exists');
+              throw new Error('user already exists');
             } else {
-              return connection.queryAsync("INSERT INTO users(email, username, password) values ($1, $2, $3)", [data.email, data.username, data.password])
+              return connection.queryAsync("INSERT INTO users(email, username, password) values ($1, $2, $3)", [email, username, password])
             }
           }, function(err) {
             console.log('rejected with error:', err);
@@ -20,15 +21,15 @@ module.exports = {
     });
   },
 
-  addUserPrefs: function(data, userid) {
+  addUserPrefs: function(userid, prefs) {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
       return connection.queryAsync("SELECT * FROM userprefs WHERE userid = " + userid)
         .then(function(result) {
           if(result.rows.length) {
-            return connection.queryAsync("UPDATE userprefs SET categories = $1 WHERE userid = $2", [data, userid])
+            return connection.queryAsync("UPDATE userprefs SET categories = $1 WHERE userid = $2", [prefs, userid])
           }
           else {
-            return connection.queryAsync("INSERT INTO userprefs(userid, categories) values ($1, $2)", [userid, data]);
+            return connection.queryAsync("INSERT INTO userprefs(userid, categories) values ($1, $2)", [userid, prefs]);
           }
         }, function(err) {
           console.log('rejected with error:', err);

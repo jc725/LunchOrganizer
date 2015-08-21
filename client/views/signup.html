@@ -11,21 +11,22 @@
         </div>
         <div class="panel-body">
 
-            <form class="login-form">
-                <label for="inputName" class="sr-only">Name</label>
-                <input type="text" ng-model="name" class="form-control" placeholder="Name" required="" autofocus="">
+            <form name="loginForm" class="login-form" novalidate>
+                <input type="text" ng-model="name" name="name" class="form-control" ng-class="{'error' : loginForm.name.$error.required}" placeholder="Name" required autofocus="">
+                <span class="error-msg" ng-show="(loginForm.name.$error.required && loginForm.name.$touched)">&nbsp;please enter your name</span>
                 <br/>
-                <label for="inputUsername" class="sr-only">User name</label>
-                <input type="text" ng-model="userName" class="form-control" placeholder="Username" required="">
+                <input type="text" ng-model="userName" name="userName" class="form-control" ng-class="{'error' : loginForm.userName.$error.required}" placeholder="Username" required="">
+                <span class="error-msg" ng-show="(loginForm.userName.$error.required && loginForm.userName.$touched)">&nbsp;please enter username</span>
                 <br/>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="text" ng-model="password" class="form-control" placeholder="Password" required="">
+                <input type="password" ng-model="password" name="password" class="form-control" ng-class="{'error' : loginForm.password.$error.required}" placeholder="Password" required="">
+                <span class="error-msg" ng-show="(loginForm.password.$error.required && loginForm.password.$touched)">&nbsp;please enter password</span>
                 <br/>
-                <label for="inputEmail" class="sr-only">Email</label>
-                <input type="email" ng-model="email" class="form-control" placeholder="Email" required="">
+                <input type="email" ng-model="email" name="email" class="form-control" ng-class="{'error' : loginForm.email.$invalid}" placeholder="Email" required="">
+                <span class="error-msg" ng-show="(loginForm.email.$error.required && loginForm.email.$touched)">&nbsp;please enter email</span>
+                <span class="error-msg" ng-show="(loginForm.email.$invalid && !loginForm.email.$error.required && loginForm.email.$touched)">&nbsp;please enter valid email</span>
                 <br/>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="signup()">Register</button>
+                <button ng-disabled="loginForm.$error.required || loginForm.email.$invalid" class="btn btn-lg btn-primary btn-block" type="submit" ng-click="signup()">Register</button>
             </form>
 
         </div>

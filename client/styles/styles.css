@@ -73,3 +73,8 @@
         background-color: #c0392b;
     }
 }
+
+.error-msg {
+  color: red;
+  font-size: smaller;
+}
