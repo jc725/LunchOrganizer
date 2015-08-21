@@ -61,7 +61,16 @@ app.post('/login',
 
 app.post('/signup', function(req, res) {
   // store user info in the db
-  res.send('OK');
+  console.log('/signup request, req data:\n', req.body.data);
+
+  db.addUser(req.body.data.email, req.body.data.userName, req.body.data.password)
+    .then(function(response) {
+      console.log('signup success');
+      res.send('OK');
+    }, function(err) {
+      console.log('signup error:', err);
+      res.sendStatus(404);
+    });
 });
 
 app.post('/setprofile', function(req, res) {
