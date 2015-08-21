@@ -4,7 +4,7 @@ angular.module('loginModule', ['factory'])
 loginController.$inject = ['$scope', 'LoginFactory', 'SessionService'];
 function loginController($scope, LoginFactory, SessionService) {
   $scope.login = function() {
-    LoginFactory.authenticate($scope.username, $scope.password)
+    LoginFactory.authenticate($scope.userName, $scope.password)
     .success(function(data) {
       // login is successful...send the user to /
       window.location.href = '/';
