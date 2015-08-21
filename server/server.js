@@ -31,8 +31,6 @@ passport.deserializeUser(function (user, done) {
 
 // AUTHENTICATION SETUP
 passport.use('local', new LocalStrategy(function(username, password, done) {
-    
-    console.log("un: ", username, " pw: ", password);
     db.getUser(username).then(function(result) {
       if (result.length && result[0].password === password) {
         return done(null, true);
@@ -51,24 +49,20 @@ app.get('/', function(req, res) {
 
 app.post('/login', 
   passport.authenticate('local', {
-    successRedirect: '/',
     failureRedirect: '/login'
   }),
   function(req, res) {
-    res.redirect('/');
+    //res.redirect('/');
+    res.send('Ok');
   }
 );
 
 app.post('/signup', function(req, res) {
   // store user info in the db
-  console.log('/signup request, req data:\n', req.body.data);
-
   db.addUser(req.body.data.email, req.body.data.userName, req.body.data.password)
     .then(function(response) {
-      console.log('signup success');
       res.send('OK');
     }, function(err) {
-      console.log('signup error:', err);
       res.sendStatus(404);
     });
 });

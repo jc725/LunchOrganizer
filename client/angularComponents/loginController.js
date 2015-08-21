@@ -7,8 +7,9 @@ function loginController($scope, LoginFactory, SessionService) {
     LoginFactory.authenticate($scope.userName, $scope.password)
     .success(function(data) {
       // login is successful...send the user to /
+      window.location.href = '/';
       SessionService.setUserLoggedIn(true);
-      $scope.$digest();
+      //$scope.$digest();
     });
   }
 }

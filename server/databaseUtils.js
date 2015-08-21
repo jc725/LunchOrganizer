@@ -7,7 +7,6 @@ module.exports = {
         return connection.queryAsync("SELECT * FROM users WHERE username = $1", [username])
           .then(function(result) {
             if (result.rows.length) {
-              console.log('user already exists');
               throw new Error('user already exists');
             } else {
               return connection.queryAsync("INSERT INTO users(email, username, password) values ($1, $2, $3)", [email, username, password])
@@ -56,7 +55,6 @@ module.exports = {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
       return connection.queryAsync("SELECT * FROM users")
         .then(function(result) {
-          console.log('users query in get prefs:', result.rows);
           release();
           return result.rows;
         }, function(err) {
@@ -68,7 +66,6 @@ module.exports = {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
       return connection.queryAsync("SELECT * FROM users WHERE username = $1", [username])
         .then(function(result) {
-          console.log('users query in get prefs:', result.rows);
           release();
           return result.rows;
         }, function(err) {
