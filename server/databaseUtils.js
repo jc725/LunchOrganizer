@@ -41,7 +41,6 @@ module.exports = {
         });
     });
   },
-
   getAllUsers: function() {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
       return connection.queryAsync("SELECT * FROM users")
@@ -51,7 +50,17 @@ module.exports = {
           return result.rows;
         });
     });
-  }
+  },
+  getUser: function(username) {
+    return pg.connectAsync(connectionString).spread(function(connection, release) {
+      return connection.queryAsync("SELECT * FROM users WHERE username = $1", [username])
+        .then(function(result) {
+          console.log('users query in get prefs:', result.rows);
+          release();
+          return result.rows;
+        });
+    });
+  },
 };
 
 // -----------------------------------//
