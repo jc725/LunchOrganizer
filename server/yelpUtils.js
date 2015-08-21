@@ -1,6 +1,7 @@
 var yelp = require('yelp');
 var db = require('./databaseUtils');
 var promise = require('bluebird');
+var _ = require('underscore');
 
 var yelpClient = yelp.createClient({
   consumer_key: "FhjjO2XJID4KVwUxclltgQ",
@@ -97,11 +98,55 @@ yelpClient.findLunch = function(userList) {
         console.log("cats: ", categories);
 
         // DO THE YELP SEARCH
+        var yelps = {};
+        var finished = false;
+        var count = Object.keys(categories).length;
 
-        resolve(dummyResults);
-        //return [{}, {}, {}];
+        for (var key in categories) {
+          console.log('key:', key);
+          yelpClient.search({term: key, location: 'San Francisco', limit: 10}, function (error, results) {
+            if(error) {
+              console.log('search error:', error);
+            }
+            //console.log('yelp search results:', results.businesses);
+            if (results.businesses.length) {
+              for(var i = 0; i < results.businesses.length; i++) {
+                if(yelps[results.businesses[i].id]) {
+                  yelps[results.businesses[i].id].sort += 1;
+                } else {
+                  var obj = {
+                    restaurantName: results.businesses[i].name,
+                    url: results.businesses[i].url,
+                    location: results.businesses[i].location.city,
+                    image_url: results.businesses[i].image_url,
+                    desc: results.businesses[i].snippet_text,
+                    phone: results.businesses[i].phone,
+                    rating_url: results.businesses[i].rating_img_url,
+                    review_count: results.businesses[i].review_count,
+                    sort: 1 * categories[key]
+                  };
+
+                  yelps[results.businesses[i].id] = obj;
+                }
+              }
+            }
+            count--;
+          })
+        }
+
+        var waitForYelps = function() {
+          if (count > 0) {
+            console.log("count ", count);
+            setTimeout(waitForYelps, 10)
+          } else {
+            console.log("yelps:", yelps);
+            resolve(yelps);
+          }
+        };
+
+        waitForYelps();
       }
-    }
+    };
 
     waitForResults();
   });

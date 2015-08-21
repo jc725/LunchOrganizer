@@ -17,9 +17,12 @@
                             <div>
                                <img style="width:40px;height:40px" class="img-responsive" src="http://www.thenextgreatgeneration.com/wp-content/uploads/2011/08/yelp.jpg"/>
                             </div>
-                            <h5>{{ reco.restaurantName }}</h5>
+                            <a href="{{ 'http://' + reco.url }}"><h5>{{ reco.restaurantName }}</h5></a>
                             <img src="{{ reco.image_url }}">
-                            <a href="{{ 'http://' + reco.url }}">{{ reco.url }}</a>
+                            <br>
+                            <img src="{{ reco.rating_url }}">
+                            <span>({{ reco.review_count }})</span>
+                            <br>
                             <p>{{ reco.desc }}</p>
                             <p>{{ reco.location }}</p>
                             <p>{{ reco.phone }}</p>

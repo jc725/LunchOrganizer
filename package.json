@@ -36,6 +36,7 @@
     "passport-local": "^1.0.0",
     "postgres-bluebird": "0.0.4",
     "request": "^2.61.0",
+    "underscore": "^1.8.3",
     "yelp": "^0.2.0"
   }
 }
