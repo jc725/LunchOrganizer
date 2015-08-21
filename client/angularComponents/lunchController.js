@@ -4,12 +4,9 @@ angular.module('lunchModule', ['factory', 'angularSpinner'])
 lunchController.$inject = ['$scope', '$rootScope', '$http', 'ResultsService', 'usSpinnerService'];
 function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerService) {
 
-  $scope.allUsers = [
-    'Bob', 'Dave'
-  ];
+  $scope.allUsers = {};
 
-  $scope.attendees = [
-  ];
+  $scope.attendees = [];
 
   $scope.cuisines = [ 'Chinese', 'Mexican', 'Italian', 'Mediterranean', 'Indian'];
 
@@ -17,8 +14,12 @@ function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerSer
   $scope.selectedCuisine = "Select Cuisine...";
 
   $http.get('/users')
-    .success(function (response) {
-      $scope.allUsers = response;
+    .success(function (results) {
+      for (var i = 0; i < results.length; ++i) {
+        var value = results[i];
+        var key = value.username;
+        $scope.allUsers[key] = value;
+      }
     })
     .catch(function (err) {
       console.log(err);
@@ -29,23 +30,21 @@ function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerSer
     var index = $scope.attendees.indexOf(attendee);
     if (index < 0) {
       $scope.attendees.push(attendee);
-      // remove from users
-      index = $scope.allUsers.indexOf(attendee);
-      $scope.allUsers.splice(index, 1);
       $scope.selectedUser = "Select User...";
+    } else {
+      $scope.userAlreadyAdded = true;
     }
   };
 
   $scope.userSelected = function(user) {
-    $scope.selectedUser = user;
+    $scope.selectedUser = user.username;
+    $scope.userAlreadyAdded = false;
   }
 
   $scope.removeAttendee = function(attendee) {
     var index = $scope.attendees.indexOf(attendee);
     if (index >= 0) {
       $scope.attendees.splice(index, 1);
-      // add it to users
-      $scope.allUsers.push(attendee);
     }
   }
 
