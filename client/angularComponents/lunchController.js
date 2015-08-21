@@ -3,6 +3,7 @@ angular.module('lunchModule', ['factory', 'angularSpinner'])
 
 lunchController.$inject = ['$scope', '$rootScope', '$http', 'ResultsService', 'usSpinnerService'];
 function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerService) {
+
   $scope.allUsers = [
     'Bob', 'Dave'
   ];
@@ -14,6 +15,14 @@ function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerSer
 
   $scope.selectedUser = "Select User...";
   $scope.selectedCuisine = "Select Cuisine...";
+
+  $http.get('/users')
+    .success(function (response) {
+      $scope.allUsers = response.data;
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
 
   $scope.addAttendee = function() {
     var attendee = $scope.selectedUser;
