@@ -12,7 +12,7 @@ module.exports = {
               return connection.queryAsync("INSERT INTO users(email, username, password) values ($1, $2, $3)", [email, username, password])
             }
           }, function(err) {
-            console.log('rejected with error:', err);
+            throw new Error(err);
           })
         .finally(function() {
           release();
@@ -31,7 +31,7 @@ module.exports = {
             return connection.queryAsync("INSERT INTO userprefs(username, categories) values ($1, $2)", [username, prefs]);
           }
         }, function(err) {
-          console.log('rejected with error:', err);
+            throw new Error(err);
         })
         .finally(function() {
           release();
@@ -40,14 +40,16 @@ module.exports = {
     });
   },
 
-  getUserPrefs: function(userid) {
+  getUserPrefs: function(username) {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
-      return connection.queryAsync("SELECT * FROM userprefs WHERE userid = $1", [userid])
+      return connection.queryAsync("SELECT * FROM userprefs WHERE username = $1", [username])
         .then(function(result) {
           release();
+          console.log('results');
           return result.rows;
         }, function(err) {
-          console.log('rejected with error:', err);
+          console.log('error');
+            throw new Error(err);
         });
     });
   },
@@ -58,7 +60,7 @@ module.exports = {
           release();
           return result.rows;
         }, function(err) {
-          console.log('rejected with error:', err);
+            throw new Error(err);
         });
     });
   },
@@ -69,7 +71,7 @@ module.exports = {
           release();
           return result.rows;
         }, function(err) {
-          console.log('rejected with error:', err);
+            throw new Error(err);
         });
     });
   }

@@ -85,6 +85,7 @@
 }
 
 .results-panel {
-    max-height: 590px;
-    overflow: scroll;
+    max-height: 550px;
+    overflow: auto;
+    bottom: 20px;
 }
