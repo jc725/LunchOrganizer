@@ -10,13 +10,17 @@
             <div class="panel-heading">
                 <h1 class="panel-title">Here are some recommendations</h1>
             </div>
-            <div class="panel-body">
+            <div class="panel-body results-panel">
                 <div class="list-group">
                     <div ng-repeat="reco in recommendations">
                         <div class="list-group-item">
+                            <div>
+                               <img style="width:40px;height:40px" class="img-responsive" src="http://www.thenextgreatgeneration.com/wp-content/uploads/2011/08/yelp.jpg"/>
+                            </div>
                             <h5>{{ reco.restaurantName }}</h5>
                             <label>{{ reco.url }}</label>
                             <p>{{ reco.desc }}</p>
+                            <p>{{ reco.address }}</p>
                             <p>{{ reco.location }}</p>
                             <p>{{ reco.phone }}</p>
                         </div>

@@ -97,6 +97,15 @@ app.post('/organizeLunch', function(req, res) {
       desc: 'I ordered the lobster risotto and Betty had the foie gras. Roast Maine Lobster with Potato Pure: Best Potatoes ever!  •  I got the 5 course meal, and my husband got the 4 course.',
       address: '800 N Point St, San Francisco, CA 94109',
       phone: '(415) 749-2060'
+    },
+    {
+      restaurantName: 'Olive Garden2',
+      url: 'www.garydarko.com',
+      location: 'San Francisco',
+      image_url: '//s3-media1.fl.yelpcdn.com/bphoto/UMuLfbLrWnkQyrEToDq9bg/90s.jpg',
+      desc: 'I ordered the lobster risotto and Betty had the foie gras. Roast Maine Lobster with Potato Pure: Best Potatoes ever!  •  I got the 5 course meal, and my husband got the 4 course.',
+      address: '800 N Point St, San Francisco, CA 94109',
+      phone: '(415) 749-2060'
     }
   ];
 

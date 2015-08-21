@@ -80,6 +80,11 @@
 }
 
 .error-msg {
-  color: red;
-  font-size: smaller;
+    color: red;
+    font-size: smaller;
+}
+
+.results-panel {
+    max-height: 590px;
+    overflow: scroll;
 }
