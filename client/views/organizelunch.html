@@ -34,11 +34,9 @@
                 <div style="margin:20px">
                     <ul class="list-group" ng-repeat="attendee in attendees">
                         <li>
-                            <div>
-                                {{ attendee }}
-                                <span style="width:100px;display:inline-block"></span>
-                                <button class="btn btn-danger" ng-click="removeAttendee(attendee)" type="checkbox" style="padding:5px">Remove</button>
-                            </div>
+                            {{ attendee }}
+                            <span style="width:100px;display:inline-block"></span>
+                            <button class="btn btn-danger" ng-click="removeAttendee(attendee)" type="checkbox" style="padding:5px">Remove</button>
                         </li>
                     </ul>
                 </div>
