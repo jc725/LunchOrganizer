@@ -18,7 +18,7 @@ function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerSer
 
   $http.get('/users')
     .success(function (response) {
-      $scope.allUsers = response.data;
+      $scope.allUsers = response;
     })
     .catch(function (err) {
       console.log(err);
