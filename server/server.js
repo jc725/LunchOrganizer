@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client'));
 
 app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser(function (user, done) {
     done(null, user);
@@ -48,22 +49,15 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.post('/login', function(req, res) {
-    console.log("server login");
-    console.log("", req.body.username, req.body.password);
-    passport.authenticate('local', {
-      // TODO this doesn't quite work
-      successRedirect: '/',
-      failureRedirect: '/login',
-      failureFlash: true
-    });
+app.post('/login', 
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  }),
+  function(req, res) {
+    res.redirect('/');
   }
 );
-
-// app.post('/login',
-//   passport.authenticate('login', { successRedirect: '/',
-//                                    failureRedirect: '/#/Login'})
-// );
 
 app.post('/signup', function(req, res) {
   // store user info in the db
