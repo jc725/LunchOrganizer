@@ -22,7 +22,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li ng-repeat="user in allUsers">
-                            <a ng-click="userSelected(user)">{{ user.username }}</a>
+                            <a ng-click="userSelected(user)">{{ user }}</a>
                         </li>
                     </ul>
                     <button class="btn btn-md btn-primary" ng-click="addAttendee()" style="max-width:100px">Add</button>

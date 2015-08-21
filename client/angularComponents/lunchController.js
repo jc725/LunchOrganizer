@@ -4,21 +4,21 @@ angular.module('lunchModule', ['factory', 'angularSpinner'])
 lunchController.$inject = ['$scope', '$rootScope', '$http', 'ResultsService', 'usSpinnerService'];
 function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerService) {
 
-  $scope.allUsers = {};
+  $scope.allUsers = [];
 
   $scope.attendees = [];
 
   $scope.cuisines = [ 'Chinese', 'Mexican', 'Italian', 'Mediterranean', 'Indian'];
 
-  $scope.selectedUser = "Select User...";
+  var selectedUser = "Select User...";
+  $scope.selectedUser = selectedUser;
   $scope.selectedCuisine = "Select Cuisine...";
 
   $http.get('/users')
     .success(function (results) {
       for (var i = 0; i < results.length; ++i) {
-        var value = results[i];
-        var key = value.username;
-        $scope.allUsers[key] = value;
+        var username = results[i].username;
+        $scope.allUsers.push(username);
       }
     })
     .catch(function (err) {
@@ -27,17 +27,19 @@ function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerSer
 
   $scope.addAttendee = function() {
     var attendee = $scope.selectedUser;
-    var index = $scope.attendees.indexOf(attendee);
-    if (index < 0) {
-      $scope.attendees.push(attendee);
-      $scope.selectedUser = "Select User...";
-    } else {
-      $scope.userAlreadyAdded = true;
+    if (attendee !== selectedUser) {
+      var index = $scope.attendees.indexOf(attendee);
+      if (index < 0) {
+        $scope.attendees.push(attendee);
+        $scope.selectedUser = selectedUser;
+      } else {
+        $scope.userAlreadyAdded = true;
+      }
     }
   };
 
   $scope.userSelected = function(user) {
-    $scope.selectedUser = user.username;
+    $scope.selectedUser = user;
     $scope.userAlreadyAdded = false;
   }
 
@@ -72,7 +74,7 @@ function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerSer
         .finally(function () {
           $scope.stopSpin();
         });
-    }, 5000);
+    }, 3000);
   }
 
   // Spinner stuff
