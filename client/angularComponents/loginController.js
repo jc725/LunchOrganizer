@@ -3,6 +3,7 @@ angular.module('loginModule', ['factory'])
 
 loginController.$inject = ['$scope', 'LoginFactory', 'SessionService'];
 function loginController($scope, LoginFactory, SessionService) {
+  $scope.loginFailed = false;
   $scope.login = function() {
     LoginFactory.authenticate($scope.userName, $scope.password)
     .success(function(data) {
@@ -10,6 +11,12 @@ function loginController($scope, LoginFactory, SessionService) {
       window.location.href = '/';
       SessionService.setUserLoggedIn(true);
       //$scope.$digest();
+    })
+    .error(function(err) {
+      $scope.loginFailed = true;
+      $scope.userName = '';
+      $scope.password = '';
+      console.log("error authenticating ", err);
     });
   }
 }

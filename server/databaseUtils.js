@@ -20,15 +20,15 @@ module.exports = {
     });
   },
 
-  addUserPrefs: function(userid, prefs) {
+  addUserPrefs: function(username, prefs) {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
-      return connection.queryAsync("SELECT * FROM userprefs WHERE userid = " + userid)
+      return connection.queryAsync("SELECT * FROM userprefs WHERE username = $1", [username])
         .then(function(result) {
           if(result.rows.length) {
-            return connection.queryAsync("UPDATE userprefs SET categories = $1 WHERE userid = $2", [prefs, userid])
+            return connection.queryAsync("UPDATE userprefs SET categories = $1 WHERE username = $2", [prefs, username])
           }
           else {
-            return connection.queryAsync("INSERT INTO userprefs(userid, categories) values ($1, $2)", [userid, prefs]);
+            return connection.queryAsync("INSERT INTO userprefs(username, categories) values ($1, $2)", [username, prefs]);
           }
         }, function(err) {
           console.log('rejected with error:', err);
@@ -97,7 +97,8 @@ module.exports = {
 // ---- Extras ---- //
 // If needed, here are the create table commands (run locally in psql in lunch database):
 // CREATE TABLE users(id SERIAL PRIMARY KEY not null, email varchar(300) not null,  username varchar(300) NOT NULL, password varchar(300) NOT NULL);
-// CREATE TABLE userPrefs(id SERIAL PRIMARY KEY not null, userid INTEGER not null, categories varchar(300));
+// CREATE TABLE userPrefs(id SERIAL PRIMARY KEY not null, username varchar(300) NOT NULL, categories varchar(300));
+// delete table: > drop table {tablename}
 
 
 // ---- DO NOT EVER DO THIS ---- //
