@@ -1,12 +1,13 @@
 angular.module('lunchModule', ['factory', 'angularSpinner'])
   .controller('LunchController', lunchController);
 
-lunchController.$inject = ['$scope', '$rootScope', '$http', 'ResultsService', 'usSpinnerService'];
-function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerService) {
+lunchController.$inject = ['$scope', '$rootScope', '$http', 'ResultsService', 'usSpinnerService', 'SessionService'];
+function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerService, SessionService) {
 
   $scope.allUsers = [];
 
-  $scope.attendees = [];
+  // add the logged in user automatically
+  $scope.attendees = [ SessionService.getUserLoggedIn() ];
 
   $scope.cuisines = [ 'Chinese', 'Mexican', 'Italian', 'Mediterranean', 'Indian'];
 
