@@ -41,6 +41,11 @@ app.post('/organizeLunch', function(req, res) {
   res.send('OK');
 });
 
+app.get('/users', function(req, res) {
+  var users = { data: [ 'reva', 'sylvie', 'justin', 'will', 'dennis' ] };
+  res.send(users);
+});
+
 app.get('/search', function(req, res) {
 
   yelper.search({term: "food", location: "San Francisco"}, function(error, data) {
