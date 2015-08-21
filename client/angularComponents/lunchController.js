@@ -74,7 +74,7 @@ function lunchController($scope, $rootScope, $http, ResultsService, usSpinnerSer
         .finally(function () {
           $scope.stopSpin();
         });
-    }, 3000);
+    }, 2000);
   }
 
   // Spinner stuff
