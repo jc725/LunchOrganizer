@@ -10,7 +10,7 @@ function signupController($scope, $http, SessionService) {
     $http.post('/signup', {
       data: {
         name: $scope.name,
-        email: $scope.password,
+        email: $scope.email,
         userName: $scope.userName,
         password: $scope.password
       }
