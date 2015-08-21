@@ -4,7 +4,16 @@ var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/lu
 module.exports = {
   addUser: function(data) {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
-      return connection.queryAsync("INSERT INTO users(email, username, password) values ($1, $2, $3)", [data.email, data.username, data.password])
+        return connection.queryAsync("SELECT * FROM users WHERE username = $1", [data.username])
+          .then(function(result) {
+            if (result.rows.length) {
+              console.log('user already exists');
+            } else {
+              return connection.queryAsync("INSERT INTO users(email, username, password) values ($1, $2, $3)", [data.email, data.username, data.password])
+            }
+          }, function(err) {
+            console.log('rejected with error:', err);
+          })
         .finally(function() {
           release();
         });
@@ -15,12 +24,12 @@ module.exports = {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
       return connection.queryAsync("SELECT * FROM userprefs WHERE userid = " + userid)
         .then(function(result) {
-          console.log('userprefs query in add prefs:', result);
-          console.log('userprefs query in add prefs rows:', result.rows);
           if(result.rows.length) {
             return connection.queryAsync("UPDATE userprefs SET categories = $1 WHERE userid = $2", [data, userid])
           }
-           return connection.queryAsync("INSERT INTO userprefs(userid, categories) values ($1, $2)", [userid, data]);
+          else {
+            return connection.queryAsync("INSERT INTO userprefs(userid, categories) values ($1, $2)", [userid, data]);
+          }
         }, function(err) {
           console.log('rejected with error:', err);
         })
@@ -35,9 +44,10 @@ module.exports = {
     return pg.connectAsync(connectionString).spread(function(connection, release) {
       return connection.queryAsync("SELECT * FROM userprefs WHERE userid = $1", [userid])
         .then(function(result) {
-          console.log('userprefs query in get prefs:', result);
           release();
-          return result;
+          return result.rows;
+        }, function(err) {
+          console.log('rejected with error:', err);
         });
     });
   },
@@ -48,6 +58,8 @@ module.exports = {
           console.log('users query in get prefs:', result.rows);
           release();
           return result.rows;
+        }, function(err) {
+          console.log('rejected with error:', err);
         });
     });
   },
@@ -58,9 +70,11 @@ module.exports = {
           console.log('users query in get prefs:', result.rows);
           release();
           return result.rows;
+        }, function(err) {
+          console.log('rejected with error:', err);
         });
     });
-  },
+  }
 };
 
 // -----------------------------------//
