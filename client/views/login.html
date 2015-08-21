@@ -12,6 +12,7 @@
             <h3 class="panel-title">Please sign in</h3>
         </div>
         <div class="panel-body">
+            <label class="loginFailure" ng-show="loginFailed">The username and/or password is incorrect.</label>
             <form class="login-form">
                 <label for="inputUsername" class="sr-only">User name</label>
                 <input type="text" ng-model="userName" class="form-control" placeholder="Username" required="" autofocus="">
