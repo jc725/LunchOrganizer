@@ -7,7 +7,6 @@ var express = require('express'),
     db = require('./databaseUtils'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
-
 var app = express();
 
 var port = process.env.PORT || 8000;
@@ -19,10 +18,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client'));
 
+app.use(passport.initialize());
+
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+    done(null, user);
+});
+
 // AUTHENTICATION SETUP
-passport.use(new LocalStrategy(
-  function(username, password, done) {
+passport.use('local', new LocalStrategy(function(username, password, done) {
     
+    console.log("un: ", username, " pw: ", password);
     db.getUser(username).then(function(result) {
       if (result.length && result[0].password === password) {
         return done(null, true);
@@ -35,17 +44,26 @@ passport.use(new LocalStrategy(
   }
 ));
 
-
 app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.post('/login', passport.authenticate('local', {
-    // TODO this doesn't quite work
-    successRedirect: '/',
-    failureRedirect: '/#/Login'
-  })
+app.post('/login', function(req, res) {
+    console.log("server login");
+    console.log("", req.body.username, req.body.password);
+    passport.authenticate('local', {
+      // TODO this doesn't quite work
+      successRedirect: '/',
+      failureRedirect: '/login',
+      failureFlash: true
+    });
+  }
 );
+
+// app.post('/login',
+//   passport.authenticate('login', { successRedirect: '/',
+//                                    failureRedirect: '/#/Login'})
+// );
 
 app.post('/signup', function(req, res) {
   // store user info in the db
